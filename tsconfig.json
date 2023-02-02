@@ -18,7 +18,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "styles/*": ["styles/*"],
+      "features/*": ["features/*"],
+      "app/*": ["app/*"],
+    },
+    "plugins": [
+      {"name": "typescript-plugin-css-modules"}
+    ]
   },
   "include": [
     "src"
