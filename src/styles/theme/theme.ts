@@ -4,5 +4,6 @@ import { palette } from "./palette";
 
 export const theme = createTheme({
   components,
-  palette
+  palette,
+  spacing: (factor = 1) => `${factor * 0.5}rem`
 })
