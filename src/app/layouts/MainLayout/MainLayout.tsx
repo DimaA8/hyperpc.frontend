@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { Header } from 'app/organisms/Header'
+import { Footer } from 'app/components/Footer'
 
 export const MainLayout = () => {
   return (
@@ -12,6 +13,7 @@ export const MainLayout = () => {
       <Outlet/>
 
       {/* Footer */}
+      <Footer />
     </div>
   )
 }
