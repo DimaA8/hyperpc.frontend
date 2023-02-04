@@ -6,6 +6,7 @@ export const MuiButton: ThemeOptions['components'] = {
   MuiButton: {
     styleOverrides: {
       root: {
+        lineHeight: 1
       },
       contained: {
         backgroundColor: palette?.secondary?.main,

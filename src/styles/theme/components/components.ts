@@ -6,6 +6,7 @@ import { MuiButton } from './MuiButton'
 import { MuiIconButton } from './MuiIconButton'
 import { MuiContainer } from './MuiContainer'
 import { MuiDivider } from './MuiDivider'
+import { MuiDrawer } from './MuiDrawer'
 
 export const components: ThemeOptions['components'] = {
   MuiCssBaseline,
@@ -14,5 +15,6 @@ export const components: ThemeOptions['components'] = {
   ...MuiButton,
   ...MuiIconButton,
   ...MuiContainer,
-  ...MuiDivider
+  ...MuiDivider,
+  ...MuiDrawer
 }
