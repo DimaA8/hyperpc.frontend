@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import {
   Box,
   Button,
   Typography
 } from '@mui/material'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
+import { MCContext } from 'app/organisms/ModalController/ModalControllerContext'
 
 export const MobileLocation = () => {
-  const [open, setOpen] = useState(false)
+  const modalController = useContext(MCContext)
 
   const toggleModal = () => {
-    setOpen(!open)
+    modalController?.toggleActiveModal('location')
   }
 
   return (

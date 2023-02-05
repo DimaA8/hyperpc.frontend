@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { 
   IconButton,
   Drawer, 
@@ -6,9 +6,17 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close'
 import { MobileMenuView } from './MobileMenuView';
+import { MCContextState } from 'app/organisms/ModalController/ModalControllerContext';
 
 export const MobileMenu = () => {
   const [open, setOpen] = useState(false)
+  const modalControllerState = useContext(MCContextState)
+
+  useEffect(() => {
+    if (modalControllerState?.modal) {
+      setOpen(false)
+    }
+  }, [modalControllerState?.modal])
 
   const toggleOpen = () => {
     setOpen(!open)
