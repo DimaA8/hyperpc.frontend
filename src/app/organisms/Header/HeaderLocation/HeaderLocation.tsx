@@ -5,9 +5,9 @@ import {
   Fade
 } from '@mui/material'
 import NearMeIcon from '@mui/icons-material/NearMe'
-import { LocationMenu } from './LocationMenu'
+import { Location } from 'app/organisms/Location'
 
-export const Location = () => {
+export const HeaderLocation = () => {
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
 
   const toggleOpen = (event: MouseEvent) => {
@@ -31,7 +31,7 @@ export const Location = () => {
         <Fade
           {...TransitionProps}
         >
-          <LocationMenu />
+          <Location />
         </Fade>
         )}
       </Popper>

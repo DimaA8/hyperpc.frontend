@@ -6,7 +6,7 @@ import {
   useTheme
 } from '@mui/material'
 import PhoneIcon from '@mui/icons-material/Phone'
-import { Location } from './Location'
+import { HeaderLocation } from './HeaderLocation'
 import { Search } from './Search'
 
 export const UserActions = () => {
@@ -17,7 +17,7 @@ export const UserActions = () => {
   return (
     <>
       {/* Местоположение */}
-      {!isMobile ? <Location /> : null}
+      {!isMobile ? <HeaderLocation /> : null}
 
       {/* Телефон */}
       
