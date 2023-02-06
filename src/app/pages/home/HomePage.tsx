@@ -1,7 +1,17 @@
 import React from 'react'
+import {
+  Container
+} from '@mui/material'
+import { Slider } from 'app/views/Slider'
 
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+    
+      <Slider />
+      <Container>
+        
+      </Container>
+    </>
   )
 }
