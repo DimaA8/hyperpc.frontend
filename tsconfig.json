@@ -24,6 +24,8 @@
       "styles/*": ["styles/*"],
       "features/*": ["features/*"],
       "app/*": ["app/*"],
+      "api/*": ["api/*"],
+      "server/*": ["server/*"],
     },
     "plugins": [
       {"name": "typescript-plugin-css-modules"}

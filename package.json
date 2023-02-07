@@ -52,7 +52,9 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
     "@types/react-router-dom": "^5.3.3",
+    "miragejs": "^0.1.46",
     "typescript-plugin-css-modules": "^4.1.1"
   }
 }
