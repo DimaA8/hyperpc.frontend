@@ -31,7 +31,7 @@ export const Header = () => {
         >
           <Grid item xl={9} xs={7} display="flex" alignItems="center">
             <RouterLink to="/">
-              <ReactSVG src="hyperpc-logo-white.svg" />
+              <ReactSVG src="/hyperpc-logo-white.svg" />
             </RouterLink>
             {!isTablet ? <DesktopNav /> : null}
           </Grid>

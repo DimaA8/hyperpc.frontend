@@ -1,3 +1,3 @@
 export const EndPoints = {
-  STOCK_PRODUCTS: '/stock-products'
+  COMPUTERS: '/computers'
 } as const

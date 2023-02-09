@@ -4,8 +4,7 @@ import {
 } from 'miragejs'
 import { fixtures } from './fixtures'
 import { factories } from './factories'
-import { seeds } from './seeds'
-import { EndPoints } from 'api/EndPoints'
+import { EndPoints } from 'api'
 
 export const server = () => {
   createServer({
@@ -28,17 +27,16 @@ export const server = () => {
       )
     },
     routes() {
+      this.urlPrefix = 'https://localhost:5000/'
       this.namespace = 'api'
 
-      this.get(EndPoints.STOCK_PRODUCTS, (schema, request) => {
-        return {
-          procGens: schema.db.procGens,
-          videocards: schema.db.videocards,
-          boards: schema.db.boards,
-          stylings: schema.db.stylings,
-          computers: schema.db.computers
-        }
+      this.get(EndPoints.COMPUTERS, (schema, request) => {
+        return schema.db.computers
       })
+
+      this.urlPrefix = 'http://localhost:3000/'
+      this.namespace = '/'
+      this.passthrough()
     },
   })
 }
