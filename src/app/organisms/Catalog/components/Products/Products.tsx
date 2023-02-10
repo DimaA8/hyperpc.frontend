@@ -44,8 +44,9 @@ export const Products = () => {
               <Typography variant="h4" component="p">{computer.price} Р</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Button 
+              <Button
                 size="small"
+                variant="slide"
                 startIcon={<LocalGroceryStoreIcon />}
               >
                 В корзину

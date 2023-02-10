@@ -2,7 +2,8 @@ import React, {
   ChangeEvent, 
   useContext, 
   useState,
-  useEffect
+  useEffect,
+  useMemo
 } from 'react'
 import {
   Box,
@@ -80,35 +81,37 @@ export const Filters = () => {
   }
 
   // Все категории фильтров
-  const filtersView = Object.entries(allFilters).map(([key, value]) => {
-    return (
-      <Accordion key={key}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls={key}
-          id={key}
-        >
-          {key.toUpperCase()}
-        </AccordionSummary>
-        <AccordionDetails>
-          <FormGroup onChange={(e) => handleFilterChange(e as ChangeEvent<HTMLInputElement>, key)}>
-          {
-            // Все значения фильтров
-            Array.from((value as Set<string>)).map((filter) => {
-              return (
-                <FormControlLabel 
-                  key={filter}
-                  control={<Checkbox value={filter} />} 
-                  label={filter} 
-                />
-              )
-            })
-          }
-          </FormGroup>
-        </AccordionDetails>
-      </Accordion>
-    )
-  })
+  const filtersView = useMemo(() => (
+    Object.entries(allFilters).map(([key, value]) => {
+      return (
+        <Accordion key={key}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls={key}
+            id={key}
+          >
+            {key.toUpperCase()}
+          </AccordionSummary>
+          <AccordionDetails>
+            <FormGroup onChange={(e) => handleFilterChange(e as ChangeEvent<HTMLInputElement>, key)}>
+            {
+              // Все значения фильтров
+              Array.from((value as Set<string>)).map((filter) => {
+                return (
+                  <FormControlLabel 
+                    key={filter}
+                    control={<Checkbox value={filter} />} 
+                    label={filter} 
+                  />
+                )
+              })
+            }
+            </FormGroup>
+          </AccordionDetails>
+        </Accordion>
+      )
+    })
+  ), [ allFilters ]) 
 
   return (
     <Box>

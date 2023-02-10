@@ -7,6 +7,11 @@ import { MuiIconButton } from './MuiIconButton'
 import { MuiContainer } from './MuiContainer'
 import { MuiDivider } from './MuiDivider'
 import { MuiDrawer } from './MuiDrawer'
+import { MuiAccordion } from './MuiAccordion'
+import { MuiCheckbox } from './MuiCheckbox'
+import { MuiAccordionSummary } from './MuiAccordionSummary'
+import { MuiCardContent } from './MuiCardContent'
+import { MuiCard } from './MuiCard'
 
 export const components: ThemeOptions['components'] = {
   MuiCssBaseline,
@@ -16,5 +21,10 @@ export const components: ThemeOptions['components'] = {
   ...MuiIconButton,
   ...MuiContainer,
   ...MuiDivider,
-  ...MuiDrawer
+  ...MuiDrawer,
+  ...MuiAccordion,
+  ...MuiCheckbox,
+  ...MuiAccordionSummary,
+  ...MuiCardContent,
+  ...MuiCard
 }
