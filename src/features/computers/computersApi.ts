@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { BaseUrl, EndPoints } from 'api'
 
 export interface Computer {
+  id: number,
   image: {
     src: string;
     alt: string;

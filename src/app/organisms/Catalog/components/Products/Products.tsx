@@ -11,10 +11,10 @@ import {
   Pagination
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import { useGetComputersQuery } from 'features/computers/computersApi'
 import { CatalogContext } from '../../contexts/CatalogContext';
 import { filterComputers, applyPagination } from '../../helpers';
+import { AddToCart } from 'app/components/AddToCart';
 
 export const Products = () => {
   const { data: computers = [] } = useGetComputersQuery()
@@ -44,13 +44,7 @@ export const Products = () => {
               <Typography variant="h4" component="p">{computer.price} Р</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Button
-                size="small"
-                variant="slide"
-                startIcon={<LocalGroceryStoreIcon />}
-              >
-                В корзину
-              </Button>
+              <AddToCart productId={computer.id} />
             </Grid>
           </Grid>
         </CardContent>
