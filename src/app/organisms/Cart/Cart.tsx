@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { 
   Typography,
   Box,
+  Button,
   Table,
   TableRow,
   TableBody,
@@ -9,12 +10,18 @@ import {
   TableCell,
   Alert
 } from '@mui/material'
+import { Link as RouterLink } from 'react-router-dom'
 import { RemoveFromCart } from 'app/components/RemoveFromCart'
-import { useComputersInCart } from 'app/hooks'
+import { useAppSelector, useComputersInCart } from 'app/hooks'
 import { rem } from 'styles/theme/theme'
 
 export const Cart = () => {
   const { computersInCart } = useComputersInCart()
+  const cost = useMemo(() => {
+    return computersInCart.reduce((cost, computer) => {
+      return cost + +computer.price
+    }, 0)
+  }, [computersInCart])
 
   const rows = computersInCart.map((computer) => (
     <TableRow key={computer.id}>
@@ -50,22 +57,26 @@ export const Cart = () => {
       <Typography variant="h1" textAlign="center">Корзина</Typography>
 
       {rows.length ? (
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell>ТОВАР</TableCell>
-            <TableCell>Наличие</TableCell>
-            <TableCell>Количество</TableCell>
-            <TableCell>Цена</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows}
-        </TableBody>
-      </Table>
+      <>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>ТОВАР</TableCell>
+              <TableCell>Наличие</TableCell>
+              <TableCell>Количество</TableCell>
+              <TableCell>Цена</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {rows}
+          </TableBody>
+        </Table>
+        <Typography variant="h2">ИТОГО: {cost} Р</Typography>
+        <Button size="large" component={RouterLink} to="/cart/form">Перейти к оформлению</Button>
+      </>
       ) : (
         <Alert icon={false} severity="warning">Ваша корзина пуста</Alert>
-      )}
+      )}      
     </Box>
   )
 }
