@@ -9,8 +9,10 @@ export interface CartState {
   productIds: number[]
 }
 
+const cart = JSON.parse(localStorage.getItem(NAMESPACE) || '{ "productIds": [] }')
+
 const initialState: CartState = {
-  productIds: []
+  productIds: cart.productIds
 }
 
 const cartSlice = createSlice({
@@ -21,6 +23,7 @@ const cartSlice = createSlice({
     addProduct(state, { payload: id }: PayloadAction<number>) {
       if (!state.productIds.includes(id)) {
         state.productIds.push(id)
+        localStorage.setItem(NAMESPACE, JSON.stringify(state))
       }
     },
 
@@ -28,6 +31,7 @@ const cartSlice = createSlice({
     removeProduct(state, { payload: id }: PayloadAction<number>) {
       if (state.productIds.includes(id)) {
         state.productIds = state.productIds.filter((productId) => productId !== id)
+        localStorage.setItem(NAMESPACE, JSON.stringify(state))
       }
     }
   }
