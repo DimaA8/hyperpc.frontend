@@ -5,6 +5,7 @@ import { MainLayout } from 'app/layouts/MainLayout'
 import { devRouter } from 'dev/router'
 
 const CatalogComputerPage = React.lazy(() => import('app/pages/catalog/CatalogComputersPage'))
+const CartPage = React.lazy(() => import('app/pages/cart/CartPage'))
 
 export const appRouter = createBrowserRouter([
   {
@@ -23,8 +24,12 @@ export const appRouter = createBrowserRouter([
             element: <CatalogComputerPage />
           }
         ]
+      },
+      {
+        path: '/cart',
+        element: <CartPage />
       }
-    ]
+    ],
   },
   devRouter
 ])

@@ -28,6 +28,7 @@ export const UserMenu = () => {
         open={open}
         disablePortal={false}
         transition
+        placement="bottom-end"
         anchorEl={anchorEl}
       >
         {({ TransitionProps }) => (
