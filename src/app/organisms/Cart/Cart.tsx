@@ -6,7 +6,8 @@ import {
   TableRow,
   TableBody,
   TableHead,
-  TableCell
+  TableCell,
+  Alert
 } from '@mui/material'
 import { RemoveFromCart } from 'app/components/RemoveFromCart'
 import { useComputersInCart } from 'app/hooks'
@@ -46,8 +47,9 @@ export const Cart = () => {
 
   return (
     <Box>
-      <Typography variant="h1">Корзина</Typography>
+      <Typography variant="h1" textAlign="center">Корзина</Typography>
 
+      {rows.length ? (
       <Table>
         <TableHead>
           <TableRow>
@@ -61,6 +63,9 @@ export const Cart = () => {
           {rows}
         </TableBody>
       </Table>
+      ) : (
+        <Alert icon={false} severity="warning">Ваша корзина пуста</Alert>
+      )}
     </Box>
   )
 }
