@@ -9,11 +9,13 @@ import  {
   Radio,
   Typography,
   Button,
-  Box
+  Box,
+  useMediaQuery
 } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import * as yup from 'yup'
+import { theme } from 'styles/theme'
 
 type CartFormType = {
   name: string;
@@ -50,6 +52,8 @@ const validationSchema = yup.object({
 })
 
 export const CartForm = () => {
+  const isMob = useMediaQuery(theme.breakpoints.down('md'))
+
   return (
     <Container maxWidth="md">
       <Formik
@@ -70,6 +74,7 @@ export const CartForm = () => {
         }) => (
           <form onSubmit={handleSubmit}>
             <TextField 
+              margin="normal"
               fullWidth
               name="name"
               id="name"
@@ -81,6 +86,7 @@ export const CartForm = () => {
               helperText={touched.name && errors.name}
             />
             <TextField 
+              margin="normal"
               fullWidth
               name="phone"
               id="phone"
@@ -92,6 +98,7 @@ export const CartForm = () => {
               helperText={touched.phone && errors.phone}
             />
             <TextField 
+              margin="normal"
               fullWidth
               name="email"
               id="email"
@@ -105,8 +112,10 @@ export const CartForm = () => {
             <Box>
               <FormControl
                 error={touched.method && Boolean(errors.method)}
+                margin="normal"
               >
                 <RadioGroup
+                  row
                   aria-labelledby="demo-radio-buttons-group-label"
                   defaultValue="delivery"
                   name="method"
@@ -126,6 +135,7 @@ export const CartForm = () => {
             {values.method === 'delivery' ? 
               <TextField 
                 fullWidth
+                margin="normal"
                 name="address"
                 id="address"
                 label="Адрес *"
@@ -138,6 +148,7 @@ export const CartForm = () => {
               <Box>
                 <FormControl
                   error={touched.marketId && Boolean(errors.marketId)}
+                  margin="normal"
                 >
                   <FormLabel>Забрать из магазина</FormLabel>
                   <RadioGroup
@@ -170,7 +181,9 @@ export const CartForm = () => {
               </Box>
             }
             <Box>
-              <FormControl>
+              <FormControl
+                margin="normal"
+              >
                 <FormLabel>Методы оплаты</FormLabel>
                 <RadioGroup
                   defaultValue="card"
@@ -206,9 +219,34 @@ export const CartForm = () => {
                 </RadioGroup>
               </FormControl>
             </Box>
-            <Box>
-              <Button variant="outlined" component={Link} to="/cart">Назад</Button>
-              <Button type="submit">Оформить заказ</Button>
+            <Box 
+              display="flex"
+              flexDirection="row-reverse"
+              justifyContent="center"
+              flexWrap="wrap"
+            >
+              <Button 
+                type="submit"  
+                size="large"
+                sx={isMob ? {
+                  marginBottom: '1rem'
+                } : null}
+                {...{ fullWidth: isMob }}
+              >
+                Оформить заказ
+              </Button>
+              <Button 
+                variant="outlined" 
+                component={Link} 
+                to="/cart" 
+                size="large"
+                {...{ fullWidth: isMob }}
+                sx={!isMob ? {
+                  marginRight: '1rem'
+                } : null}
+              >
+                Назад
+              </Button>
             </Box>
           </form>
         )}

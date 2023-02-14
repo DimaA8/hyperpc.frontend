@@ -1,4 +1,4 @@
-import { ThemeOptions } from "@mui/material";
+import { easing, ThemeOptions } from "@mui/material";
 import { defaultTheme } from "../defaultTheme";
 import { palette } from "../palette";
 declare module '@mui/material/styles' {
@@ -27,6 +27,19 @@ export const MuiButton: ThemeOptions['components'] = {
       root: {
         lineHeight: 1,
         borderRadius: 0
+      },
+      outlined: {
+        backgroundColor: 'transparent',
+        color: palette.text.secondary,
+        border: '1px solid #444',
+        transition: defaultTheme.transitions.create(['all'], {
+          easing: defaultTheme.transitions.easing.easeIn,
+          duration: defaultTheme.transitions.duration.short,
+        }),
+
+        '&:hover': {
+          borderColor: '#5d5d5d'
+        }
       },
       contained: {
         backgroundColor: palette?.secondary?.main,
@@ -61,17 +74,20 @@ export const MuiButton: ThemeOptions['components'] = {
       sizeMedium: {
 
       },
-      textSizeMedium: {
-
-      },
-      textSizeLarge: {
-        fontSize: '2rem',
+      sizeLarge: {
+        fontSize: '0.875rem',
         lineHeight: '53px',
         padding: `0 ${defaultTheme.spacing(5)}`,
 
         [defaultTheme.breakpoints.down('md')]: {
           fontSize: `${defaultTheme.spacing(1.25)}`,
         }
+      },
+      textSizeMedium: {
+
+      },
+      textSizeLarge: {
+        
       },
       slide: {
         background: `linear-gradient(75deg, ${palette.secondary.main} 0 25%, ${palette.primary.light} 25% 100%) no-repeat`,

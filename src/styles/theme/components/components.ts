@@ -12,6 +12,10 @@ import { MuiCheckbox } from './MuiCheckbox'
 import { MuiAccordionSummary } from './MuiAccordionSummary'
 import { MuiCardContent } from './MuiCardContent'
 import { MuiCard } from './MuiCard'
+import { MuiInputBase } from './MuiInputBase'
+import { MuiOutlinedInput } from './MuiOutlinedInput'
+import { MuiFormLabel } from './MuiFormLabel'
+import { MuiRadio } from './MuiRadio'
 
 export const components: ThemeOptions['components'] = {
   MuiCssBaseline,
@@ -26,5 +30,9 @@ export const components: ThemeOptions['components'] = {
   ...MuiCheckbox,
   ...MuiAccordionSummary,
   ...MuiCardContent,
-  ...MuiCard
+  ...MuiCard,
+  ...MuiInputBase,
+  ...MuiOutlinedInput,
+  ...MuiFormLabel,
+  ...MuiRadio
 }
