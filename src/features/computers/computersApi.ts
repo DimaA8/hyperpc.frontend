@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { BaseUrl, EndPoints } from 'api'
+import { BaseUrl } from 'api/BaseUrl'
+import { EndPoints } from 'api/EndPoints'
 
 export interface Computer {
   id: number,
@@ -19,6 +20,7 @@ export interface Computer {
 
 export const computersApi = createApi({
   reducerPath: 'computers',
+  keepUnusedDataFor: process.env.NODE_ENV === 'test' ? 0 : 60,
   baseQuery: fetchBaseQuery({ baseUrl: BaseUrl }),
   endpoints(build) {
     return {

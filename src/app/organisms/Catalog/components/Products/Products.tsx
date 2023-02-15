@@ -30,7 +30,7 @@ export const Products = () => {
 
   // Все отфильтрованные компьюетры на текущей странице
   const computersView = paginatedComputers.length ? paginatedComputers.map((computer) => (
-    <Grid item xs={4}>
+    <Grid item xs={4} key={computer.id}>
       <Card>
         <CardMedia component="img" 
           src={computer.image.src} 

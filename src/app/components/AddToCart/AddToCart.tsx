@@ -40,6 +40,7 @@ export const AddToCart = ({ productId }: Props) => {
     <Button
       size="small"
       variant="slide"
+      data-testid="add-to-cart"
       startIcon={<LocalGroceryStoreIcon />}
       onClick={addToCart}
     >

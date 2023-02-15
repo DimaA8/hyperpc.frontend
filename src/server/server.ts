@@ -4,10 +4,11 @@ import {
 } from 'miragejs'
 import { fixtures } from './fixtures'
 import { factories } from './factories'
-import { EndPoints } from 'api'
+import { EndPoints } from 'api/EndPoints'
 
-export const server = () => {
-  createServer({
+export const server = (environment: string = 'development') => {
+  return createServer({
+    environment,
     models: {
       styling: Model,
       computer: Model,
