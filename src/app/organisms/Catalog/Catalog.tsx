@@ -7,6 +7,7 @@ import { Filters } from './components/Filters'
 import { CatalogProvider } from './contexts/CatalogContext'
 import { Products } from './components/Products'
 import { rem } from 'styles/theme/theme'
+import { useGetComputersQuery } from 'features/computers/computersApi'
 
 const drawerWidth = rem(300)
 
@@ -66,6 +67,7 @@ const Bar =  styled('div', {
 }))
 
 export const Catalog = () => {
+  const { data: computers = [] } = useGetComputersQuery();
   const [openDrawer, setOpenDrawer] = useState(false)
 
   const toggleDrawer = () => {
@@ -80,10 +82,10 @@ export const Catalog = () => {
         </Bar>
         <Box display="flex">
           <Aside open={openDrawer}>
-            <Filters />
+            <Filters computers={computers} />
           </Aside>
           <Main open={openDrawer}>
-            <Products />
+            <Products computers={computers} />
           </Main>
         </Box>
       </CatalogProvider>

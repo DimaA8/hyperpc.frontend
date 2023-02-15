@@ -1,4 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { 
+  useContext, 
+  useState,
+  useCallback
+} from 'react'
 import { 
   Box,
   Grid,
@@ -11,13 +15,16 @@ import {
   Pagination
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import { useGetComputersQuery } from 'features/computers/computersApi'
+import { Computer, useGetComputersQuery } from 'features/computers/computersApi'
 import { CatalogContext } from '../../contexts/CatalogContext';
 import { filterComputers, applyPagination } from '../../helpers';
 import { AddToCart } from 'app/components/AddToCart';
 
-export const Products = () => {
-  const { data: computers = [] } = useGetComputersQuery()
+type Props = {
+  computers: Computer[]
+}
+
+export const Products = ({ computers }: Props) => {
   const { filters } = useContext(CatalogContext)
   const [page, setPage] = useState(1)
 

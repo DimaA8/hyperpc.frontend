@@ -7,4 +7,9 @@ export const config: JestConfigWithTsJest =  {
     '^.+\\.ts?$': 'ts-jest',
     "^.+\\.(js|jsx)$": "babel-jest",
   },
+  globals: {
+    "ts-jest": {
+      isolatedModules: true
+    }
+  }
 };

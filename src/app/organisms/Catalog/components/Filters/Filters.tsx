@@ -16,7 +16,7 @@ import {
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { CatalogContext } from '../../contexts/CatalogContext'
-import { useGetComputersQuery } from 'features/computers/computersApi'
+import { Computer, useGetComputersQuery } from 'features/computers/computersApi'
 
 export interface FiltersType extends Object {
   videocards: string[];
@@ -25,8 +25,11 @@ export interface FiltersType extends Object {
   stylings: string[];
 }
 
-export const Filters = () => {
-  const { data: computers } = useGetComputersQuery()
+type Props = {
+  computers: Computer[]
+}
+
+export const Filters = ({ computers }: Props) => {
   const { filters, setFilters } = useContext(CatalogContext)
   const [ allFilters, setAllFilters ] = useState<FiltersType>({
     videocards: [],
@@ -36,7 +39,7 @@ export const Filters = () => {
   })
 
   useEffect(() => {
-    if (!computers) return
+    if (!computers.length) return
 
     const newAllFilters: FiltersType = {
       videocards: [],
