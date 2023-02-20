@@ -1,22 +1,21 @@
-import { Computer } from "features/computers/computersApi"
-import { FiltersType } from "../components/Filters/Filters"
+import { IComputer, TActiveFilterIds } from "types/computer"
 
-export const filterComputers = (computers: Computer[], filters: FiltersType): Computer[] => {
+export const filterComputers = (computers: IComputer[], filters: TActiveFilterIds): IComputer[] => {
   return computers.filter((computer) => {
 
-    if (filters.videocards.length > 0 && !filters.videocards.includes(computer.videocard)) {
+    if (filters.videocards.length > 0 && !filters.videocards.includes(computer.videocardId)) {
       return false
     }
 
-    if (filters.procGens.length > 0 && !filters.procGens.includes(computer.procGen)) {
+    if (filters.processors.length > 0 && !filters.processors.includes(computer.processorId)) {
       return false
     }
 
-    if (filters.boards.length > 0 && !filters.boards.includes(computer.board)) {
+    if (filters.boards.length > 0 && !filters.boards.includes(computer.boardId)) {
       return false
     }
 
-    if (filters.stylings.length > 0 && !filters.stylings.includes(computer.styling)) {
+    if (filters.stylings.length > 0 && !filters.stylings.includes(computer.stylingId)) {
       return false
     }
 
@@ -24,6 +23,6 @@ export const filterComputers = (computers: Computer[], filters: FiltersType): Co
   })
 }
 
-export const applyPagination = (computers: Computer[], page: number, countPerPage: number) => {
+export const applyPagination = (computers: IComputer[], page: number, countPerPage: number) => {
   return computers.slice(page * countPerPage, page * countPerPage + countPerPage)
 }

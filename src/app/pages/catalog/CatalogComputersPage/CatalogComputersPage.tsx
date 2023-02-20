@@ -4,7 +4,7 @@ import { Catalog } from 'app/organisms/Catalog'
 
 export const CatalogComputersPage = () => {
   return (
-    <Container>
+    <Container sx={{ padding: '2rem 0' }}>
       <Catalog />
     </Container>
   )

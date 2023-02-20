@@ -9,16 +9,17 @@ import { Provider } from "react-redux";
 import { store } from "app/store";
 import { Products } from "./components/Products";
 import { FC } from "react";
-import { Computer } from "features/computers/computersApi";
+import { IComputer } from "types/computer";
 
 describe('Каталог товаров', () => {
   it('Товар добавляется в корзину', async () => {
+    // 
     const initialProductCount = store.getState().cart.productIds.length;
 
+    // Создать компьютеры
     const sr = server('test');
     sr.createList('computer', 10)
-
-    const computers: Computer[] = sr.db.computers;
+    const computers: IComputer[] = sr.db.computers;
 
     render(
       <Provider store={store}>

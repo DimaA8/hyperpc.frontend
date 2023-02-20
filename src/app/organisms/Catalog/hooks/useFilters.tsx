@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Computer } from 'features/computers/computersApi'
+import { IComputer } from 'types/computer';
 
 interface Filters {
   videocards: Set<string>;
@@ -11,7 +11,7 @@ interface Filters {
 /*
   Получить фильтры из списка компьютеров
 */
-export const useFilters = (computers: Computer[] | undefined) => {
+export const useFilters = (computers: IComputer[] | undefined) => {
   const [filters, setFilters] = useState<Filters>({} as Filters)
 
   useEffect(() => {
@@ -24,10 +24,10 @@ export const useFilters = (computers: Computer[] | undefined) => {
       }
 
       computers.forEach((computer) => {
-        filters.videocards.add(computer.videocard)
-        filters.procGens.add(computer.procGen)
-        filters.boards.add(computer.board)
-        filters.stylings.add(computer.styling)
+        filters.videocards.add(computer.videocardId)
+        filters.procGens.add(computer.processorId)
+        filters.boards.add(computer.boardId)
+        filters.stylings.add(computer.stylingId)
       })
     }
   }, [computers])

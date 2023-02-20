@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useAppSelector } from 'app/hooks'
-import { Computer, useGetComputersQuery } from 'features/computers/computersApi'
+import { useGetCatalogQuery } from 'features/catalog/catalogApi'
+import { IComputer } from 'types/computer'
 
 /*
   Компьютеры в корзине
@@ -9,17 +10,17 @@ import { Computer, useGetComputersQuery } from 'features/computers/computersApi'
     Список компьютеров в корзине
 */
 
-export const useComputersInCart = (): { computersInCart: Computer[] } => {
-  const { data: computers } = useGetComputersQuery()
+export const useComputersInCart = (): { computersInCart: IComputer[] } => {
+  const { data, isSuccess } = useGetCatalogQuery()
   const { productIds } = useAppSelector((state) => state.cart)
-  const [computersInCart, setComputersInCart] = useState<Computer[]>([])
+  const [computersInCart, setComputersInCart] = useState<IComputer[]>([])
 
   useEffect(() => {
-    if (!computers) return
-    setComputersInCart(computers.filter((computer) => {
+    if (!isSuccess) return
+    setComputersInCart(data.computers.filter((computer: IComputer) => {
       return productIds.includes(computer.id) 
     }))
-  }, [productIds, computers])
+  }, [productIds, data])
 
   return { computersInCart }
 }

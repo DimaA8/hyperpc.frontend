@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import { FiltersType } from '../components/Filters/Filters'
+import { TActiveFilterIds } from 'types/computer'
 
 interface CatalogContextType {
-  filters: FiltersType,
-  setFilters: (newFilters: FiltersType) => void
+  activeFilterIds: TActiveFilterIds,
+  setActiveFilterIds: (newActiveFilterIds: TActiveFilterIds) => void
 }
 
 export const initialValue: CatalogContextType = {
-  filters: { 
+  activeFilterIds: { 
     videocards: [],
-    procGens: [],
+    processors: [],
     boards: [],
     stylings: []
   },
-  setFilters: () => {}
+  setActiveFilterIds: () => {}
 }
 
 export const CatalogContext = React.createContext<CatalogContextType>(initialValue)
@@ -23,21 +23,21 @@ interface Props {
   children: JSX.Element[] | JSX.Element
 }
 export const CatalogProvider = ({ children }: Props) => {
-  const [filters, setNewFilters] = useState<FiltersType>({ 
+  const [activeFilterIds, setFilters] = useState<TActiveFilterIds>({ 
     videocards: [],
-    procGens: [],
+    processors: [],
     boards: [],
     stylings: []
   })
 
-  const setFilters = (newFilters: FiltersType) => {
-    setNewFilters(newFilters)
+  const setActiveFilterIds = (newActiveFilterIds: TActiveFilterIds) => {
+    setFilters(newActiveFilterIds)
   }
 
   return (
     <CatalogContext.Provider value={{
-      filters,
-      setFilters
+      activeFilterIds,
+      setActiveFilterIds
     }}>
       {children}
     </CatalogContext.Provider>
