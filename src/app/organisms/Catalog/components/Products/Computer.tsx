@@ -6,6 +6,8 @@ import {
   CardMedia,
   Link,
   Typography,
+  Box,
+  styled
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { AddToCart } from 'app/components/AddToCart';
@@ -15,10 +17,28 @@ interface Props {
   computer: IComputer
 }
 
+const Root = styled(Card)(({ theme }) => ({
+
+  '.add-to-compare': {
+    opacity: 0,
+    transition: theme.transitions.create(['opacity'])
+  },
+
+  '&:hover': {
+
+    ".add-to-compare": {
+      opacity: 1
+    }
+  }
+}))
+
 const Computer = ({ computer }: Props) => {
   return (
-    <Card>
-      <AddToCompare productId={computer.id} />
+    <Root>
+      <Box display="flex" justifyContent="flex-end">
+        <AddToCompare productId={computer.id} />  
+      </Box>
+      
       <CardMedia component="img" 
         src={computer.image.src} 
         alt={computer.image.alt} 
@@ -35,7 +55,7 @@ const Computer = ({ computer }: Props) => {
           </Grid>
         </Grid>
       </CardContent>
-    </Card>
+    </Root>
   )
 }
 

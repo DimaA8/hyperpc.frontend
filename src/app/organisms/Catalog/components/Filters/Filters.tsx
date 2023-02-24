@@ -1,13 +1,7 @@
-import React, { 
-  ChangeEvent, 
-  useContext, 
-  useCallback,
-  useMemo
-} from 'react'
+import React, { useMemo } from 'react'
 import {
   Box,
 } from '@mui/material'
-import { CatalogContext } from '../../contexts/CatalogContext'
 import { IFilters } from 'types/computer'
 import { Filter } from './Filter'
 

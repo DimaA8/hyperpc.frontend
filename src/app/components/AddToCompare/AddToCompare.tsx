@@ -28,6 +28,7 @@ export const AddToCompare = ({ productId, ...rest }: Props) => {
     return (
       <Button 
         onClick={removeFromCompare} 
+        className="add-to-compare"
         variant="outlined"
         startIcon={<MenuIcon color="secondary" />}
         data-testid="remove-from-compare"
@@ -40,7 +41,8 @@ export const AddToCompare = ({ productId, ...rest }: Props) => {
 
   return (
     <Button 
-      onClick={addToCompare} 
+      onClick={addToCompare}
+      className="add-to-compare"
       variant="outlined"
       data-testid="add-to-compare"
       startIcon={<MenuIcon />}
