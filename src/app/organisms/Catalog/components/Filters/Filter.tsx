@@ -1,7 +1,4 @@
-import React, { 
-  useCallback,
-  useContext
-} from 'react'
+import React, { useCallback } from 'react'
 import {
   Accordion,
   AccordionSummary,
@@ -10,43 +7,25 @@ import {
   FormControlLabel,
   FormGroup
 } from '@mui/material'
-import { CatalogContext } from '../../contexts/CatalogContext'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { IFilter, IFilters } from 'types/computer'
-
+import { useAppDispatch } from 'app/hooks'
+import { toggleFilter } from '../../feature/catalogSlice'
 interface Props {
   values: IFilter[],
   name: keyof IFilters
 }
 
 export const Filter = ({ name, values }: Props) => {
-  const { activeFilterIds, setActiveFilterIds } = useContext(CatalogContext)
+  const dispatch = useAppDispatch();
 
   const handleFilterChange = useCallback((
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const value = e.target.value
-    const checked = e.target.checked
+    const value = e.target.value;
 
-    let newFilterIds: string[] = activeFilterIds[name];    
-
-    if (checked) {
-      // Добавить фильтр
-      if (!activeFilterIds[name].includes(value)) {
-        newFilterIds = [...activeFilterIds[name], value];
-      }
-    } else {
-      // Удалить фильтр
-      if (activeFilterIds[name].includes(value)) {
-        newFilterIds = activeFilterIds[name].filter((id) => id !== value);
-      }
-    }
-
-    setActiveFilterIds({
-      ...activeFilterIds,
-      [name]: newFilterIds
-    })
-  }, [activeFilterIds, setActiveFilterIds, name])
+    dispatch(toggleFilter({filter: name, id: value}));
+  }, [name]);
 
   return (
     <Accordion>

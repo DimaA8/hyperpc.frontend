@@ -8,17 +8,18 @@ import {
   Typography,
   Pagination
 } from '@mui/material'
-import { CatalogContext } from '../../contexts/CatalogContext';
 import { filterComputers, applyPagination } from '../../helpers';
 import { IComputer } from 'types/computer';
 import Computer from './Computer';
+import { useAppSelector } from 'app/hooks';
 
 type Props = {
   computers: IComputer[]
 }
 
 export const Products = ({ computers }: Props) => {
-  const { activeFilterIds } = useContext(CatalogContext)
+  const { activeFilterIds } = useAppSelector((state) => (state.catalog));
+
   const [page, setPage] = useState(1)
 
   const filteredComputers = filterComputers(computers, activeFilterIds)

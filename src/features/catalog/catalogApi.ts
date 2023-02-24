@@ -4,7 +4,7 @@ import { EndPoints } from 'api/EndPoints'
 import { ICatalog } from 'types/catalog'
 
 export const catalogApi = createApi({
-  reducerPath: 'catalog',
+  reducerPath: 'catalogApi',
   keepUnusedDataFor: process.env.NODE_ENV === 'test' ? 0 : 60,
   baseQuery: fetchBaseQuery({ baseUrl: BaseUrl }),
   endpoints(build) {

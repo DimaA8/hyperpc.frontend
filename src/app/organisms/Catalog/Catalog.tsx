@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { 
   Box,
   Button,
@@ -7,10 +7,11 @@ import {
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import { Filters } from './components/Filters'
-import { CatalogProvider } from './contexts/CatalogContext'
 import { Products } from './components/Products'
 import { rem } from 'styles/theme/theme'
 import { useGetCatalogQuery } from 'features/catalog/catalogApi'
+import { useAppDispatch } from 'app/hooks';
+import { reset as resetCatalog } from './feature/catalogSlice';
 
 const drawerWidth = rem(300)
 
@@ -72,8 +73,13 @@ const Bar =  styled('div', {
 }))
 
 export const Catalog = () => {
+  const dispatch = useAppDispatch();
   const { data, isLoading, isSuccess } = useGetCatalogQuery();
   const [openDrawer, setOpenDrawer] = useState(false)
+
+  useEffect(() => {
+    dispatch(resetCatalog());
+  })
 
   const toggleDrawer = () => {
     setOpenDrawer(!openDrawer)
@@ -81,29 +87,27 @@ export const Catalog = () => {
 
   return (
     <Box>
-      <CatalogProvider>
-        <Bar>
-          <Button 
-            onClick={toggleDrawer} 
-            variant="text" 
-            startIcon={<MenuIcon />}
-          >
-            Фильтры
-          </Button>
-        </Bar>
-        {isLoading ? <CircularProgress /> : <></>}
-        {isSuccess ? (
-          <Box display="flex">
-            <Aside open={openDrawer}>
-              <Filters filters={data.filters} />
-            </Aside>
-            <Main open={openDrawer}>
-              <Products computers={data.computers} />
-            </Main>
-          </Box>
-        ) : <></>
-        }
-      </CatalogProvider>
+      <Bar>
+        <Button 
+          onClick={toggleDrawer} 
+          variant="text" 
+          startIcon={<MenuIcon />}
+        >
+          Фильтры
+        </Button>
+      </Bar>
+      {isLoading ? <CircularProgress /> : <></>}
+      {isSuccess ? (
+        <Box display="flex">
+          <Aside open={openDrawer}>
+            <Filters filters={data.filters} />
+          </Aside>
+          <Main open={openDrawer}>
+            <Products computers={data.computers} />
+          </Main>
+        </Box>
+      ) : <></>
+      }
     </Box>
   )
 }
