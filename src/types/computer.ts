@@ -1,5 +1,5 @@
 export interface IComputer {
-  id: number,
+  id: string,
   image: {
     src: string;
     alt: string;

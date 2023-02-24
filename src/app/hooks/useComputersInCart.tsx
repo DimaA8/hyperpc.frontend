@@ -20,7 +20,7 @@ export const useComputersInCart = (): { computersInCart: IComputer[] } => {
     setComputersInCart(data.computers.filter((computer: IComputer) => {
       return productIds.includes(computer.id) 
     }))
-  }, [productIds, data])
+  }, [isSuccess, productIds, data])
 
   return { computersInCart }
 }

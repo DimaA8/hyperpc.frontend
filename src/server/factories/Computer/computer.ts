@@ -4,7 +4,7 @@ import { IComputer } from 'types/computer';
 
 export const computer = Factory.extend<IComputer>({
   id(n) {
-    return n;
+    return ''+n;
   },
   image: {
     src: '/images/computers/hyperpc-lumen-plus-platinum-silver-upd-450x450.jpg',

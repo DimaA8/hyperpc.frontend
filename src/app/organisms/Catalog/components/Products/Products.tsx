@@ -37,7 +37,7 @@ export const Products = ({ computers }: Props) => {
 
   return (
     <Box>
-      <Grid container>
+      <Grid container rowSpacing={6}>
         {computersView}
       </Grid>
       <Pagination 

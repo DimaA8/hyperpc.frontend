@@ -6,9 +6,9 @@ import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore'
 import CheckIcon from '@mui/icons-material/Check'
 import { addProduct } from 'features/cart/cartSlice'
 import { useAppDispatch, useAppSelector } from 'app/hooks'
-
+import { IComputer } from 'types/computer'
 interface Props {
-  productId: number
+  productId: IComputer['id']
 }
 
 export const AddToCart = ({ productId }: Props) => {

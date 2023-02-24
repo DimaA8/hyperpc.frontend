@@ -2,11 +2,12 @@ import {
   createSlice,
   PayloadAction
 } from "@reduxjs/toolkit";
+import { IComputer } from "types/computer";
 
 export const NAMESPACE = 'cart'
 
 export interface CartState {
-  productIds: number[]
+  productIds: IComputer['id'][];
 }
 
 const cart = JSON.parse(localStorage.getItem(NAMESPACE) || '{ "productIds": [] }')
@@ -20,7 +21,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     // Добавить товар с указанным id в корзину
-    addProduct(state, { payload: id }: PayloadAction<number>) {
+    addProduct(state, { payload: id }: PayloadAction<IComputer['id']>) {
       if (!state.productIds.includes(id)) {
         state.productIds.push(id)
         localStorage.setItem(NAMESPACE, JSON.stringify(state))
@@ -28,7 +29,7 @@ const cartSlice = createSlice({
     },
 
     // Удалить товар с указанным id из корзины
-    removeProduct(state, { payload: id }: PayloadAction<number>) {
+    removeProduct(state, { payload: id }: PayloadAction<IComputer['id']>) {
       if (state.productIds.includes(id)) {
         state.productIds = state.productIds.filter((productId) => productId !== id)
         localStorage.setItem(NAMESPACE, JSON.stringify(state))

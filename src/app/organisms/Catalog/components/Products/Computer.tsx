@@ -10,7 +10,7 @@ import {
 import { Link as RouterLink } from 'react-router-dom'
 import { AddToCart } from 'app/components/AddToCart';
 import { IComputer } from 'types/computer';
-
+import { AddToCompare } from 'app/components/AddToCompare';
 interface Props {
   computer: IComputer
 }
@@ -18,6 +18,7 @@ interface Props {
 const Computer = ({ computer }: Props) => {
   return (
     <Card>
+      <AddToCompare productId={computer.id} />
       <CardMedia component="img" 
         src={computer.image.src} 
         alt={computer.image.alt} 
