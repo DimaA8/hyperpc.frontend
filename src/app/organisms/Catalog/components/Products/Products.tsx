@@ -31,7 +31,7 @@ export const Products = ({ computers }: Props) => {
 
   // Все отфильтрованные компьюетры на текущей странице
   const computersView = paginatedComputers.length ? paginatedComputers.map((computer) => (
-    <Grid item xs={4} key={computer.id}>
+    <Grid item xl={4} md={6} xs={12} key={computer.id}>
       <Computer computer={computer} />
     </Grid>
   )) : <Typography>Нет компьютеров</Typography>

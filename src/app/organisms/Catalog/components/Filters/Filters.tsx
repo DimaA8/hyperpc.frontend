@@ -23,7 +23,7 @@ export const Filters = ({ filters }: Props) => {
 
   return (
     <Box>
-      <form onSubmit={() => {}}>
+      <form>
         {filtersView}
       </form>
     </Box>

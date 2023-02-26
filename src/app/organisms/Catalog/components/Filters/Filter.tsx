@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import {
   Accordion,
   AccordionSummary,
@@ -9,8 +9,9 @@ import {
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { IFilter, IFilters } from 'types/computer'
-import { useAppDispatch } from 'app/hooks'
+import { useAppDispatch, useAppSelector } from 'app/hooks'
 import { toggleFilter } from '../../feature/catalogSlice'
+import { Value } from './Value'
 interface Props {
   values: IFilter[],
   name: keyof IFilters
@@ -27,6 +28,14 @@ export const Filter = ({ name, values }: Props) => {
     dispatch(toggleFilter({filter: name, id: value}));
   }, [name]);
 
+  // Все значения фильтров
+  const valuesView = useMemo(() => {
+    return values.map((value) => {
+      return (<Value key={value.id} value={value} filterName={name} />)
+    }
+  )}
+  , [values]);
+
   return (
     <Accordion>
       <AccordionSummary
@@ -38,18 +47,7 @@ export const Filter = ({ name, values }: Props) => {
       </AccordionSummary>
       <AccordionDetails>
         <FormGroup onChange={handleFilterChange}>
-        {
-          // Все значения фильтров
-          values.map((value) => {
-            return (
-              <FormControlLabel 
-                key={value.id}
-                control={<Checkbox value={value.id} />} 
-                label={value.name} 
-              />
-            )
-          })
-        }
+          {valuesView}
         </FormGroup>
       </AccordionDetails>
     </Accordion>

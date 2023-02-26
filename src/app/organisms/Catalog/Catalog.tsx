@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { 
   Box,
   Button,
@@ -85,6 +85,10 @@ export const Catalog = () => {
     setOpenDrawer(!openDrawer)
   }
 
+  const filtersView = useMemo(() => {
+    return (isSuccess ? <Filters filters={data.filters} /> : null)
+  }, [isSuccess, data]);
+
   return (
     <Box>
       <Bar>
@@ -100,7 +104,7 @@ export const Catalog = () => {
       {isSuccess ? (
         <Box display="flex">
           <Aside open={openDrawer}>
-            <Filters filters={data.filters} />
+            {filtersView}
           </Aside>
           <Main open={openDrawer}>
             <Products computers={data.computers} />
