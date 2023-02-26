@@ -6,13 +6,6 @@ import { appRouter } from 'router/appRouter';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ModalController } from './organisms/ModalController';
 
-if (process.env.NODE_ENV !== 'production') {
-  import(/* webpackChunkName: "server" */ 'server').then(async (module) => {
-    const server = module.default;
-    server();
-  });
-}
-
 function App() {
   return (
     <ThemeProvider theme={theme}>

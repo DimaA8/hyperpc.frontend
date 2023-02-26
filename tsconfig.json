@@ -26,12 +26,13 @@
       "app/*": ["app/*"],
       "api/*": ["api/*"],
       "server/*": ["server/*"],
+      "types/*": ["types/*"],
     },
     "plugins": [
       {"name": "typescript-plugin-css-modules"}
     ]
   },
   "include": [
-    "src"
+    "src", "jest.config.ts"  
   ]
 }
