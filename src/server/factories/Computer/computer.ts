@@ -12,7 +12,7 @@ export const computer = Factory.extend<IComputer>({
   },
   name: 'HYPERPC LUMEN PRO',
   price() {
-    return faker.commerce.price(70_000, 500_000)
+    return Number(faker.commerce.price(70_0, 500_0)) * 100
   },
   /*
     0 - in stock
@@ -23,7 +23,7 @@ export const computer = Factory.extend<IComputer>({
     return faker.datatype.number({ min: 0, max: 2 })
   },
   rating() {
-    return faker.datatype.number({ min: 0, max: 5 })
+    return Math.floor(faker.datatype.number({ min: 4, max: 5 }))
   },
   reviewsCount() {
     return faker.datatype.number({ min: 0, max: 100 })

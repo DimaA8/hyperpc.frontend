@@ -1,3 +1,9 @@
+export enum Stock {
+  InStock = 0,
+  Limited = 1,
+  OutStock = 2
+}
+
 export interface IComputer {
   id: string,
   image: {
@@ -7,7 +13,7 @@ export interface IComputer {
   name: string;
   rating: number;
   price: string | number;
-  stock: number;
+  stock: Stock;
   reviewsCount: number;
   boardId: string;
   videocardId: string;

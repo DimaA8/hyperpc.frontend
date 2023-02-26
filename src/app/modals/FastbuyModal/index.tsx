@@ -1,0 +1,1 @@
+export { FastbuyModal } from './FastbuyModal';

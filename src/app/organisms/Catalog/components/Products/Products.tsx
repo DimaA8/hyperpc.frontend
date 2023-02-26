@@ -10,7 +10,7 @@ import {
 } from '@mui/material'
 import { filterComputers, applyPagination } from '../../helpers';
 import { IComputer } from 'types/computer';
-import Computer from './Computer';
+import { Computer } from './Computer';
 import { useAppSelector } from 'app/hooks';
 
 type Props = {
