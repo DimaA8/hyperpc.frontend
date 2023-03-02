@@ -18,9 +18,21 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "baseUrl": "src",
+    "paths": {
+      "styles/*": ["styles/*"],
+      "features/*": ["features/*"],
+      "app/*": ["app/*"],
+      "api/*": ["api/*"],
+      "server/*": ["server/*"],
+      "types/*": ["types/*"],
+    },
+    "plugins": [
+      {"name": "typescript-plugin-css-modules"}
+    ]
   },
   "include": [
-    "src"
+    "src", "jest.config.ts"  
   ]
 }

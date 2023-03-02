@@ -1,0 +1,1 @@
+export { seeds } from './seeds'
