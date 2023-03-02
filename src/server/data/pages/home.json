@@ -1,0 +1,53 @@
+{
+  "iconLinksList": [
+    {
+      "icon": {
+        "name": "40/models"
+      },
+      "href": "/models",
+      "text": "Все модели"
+    },
+    {
+      "icon": {
+        "name": "40/pc"
+      },
+      "href": "/catalog/computers",
+      "text": "ПК в наличии"
+    },
+    {
+      "icon": {
+        "name": "40/configurator"
+      },
+      "href": "/configurator",
+      "text": "Конфигуратор"
+    },
+    {
+      "icon": {
+        "name": "40/choice"
+      },
+      "href": "/choice",
+      "text": "Подбор"
+    },
+    {
+      "icon": {
+        "name": "40/compare"
+      },
+      "href": "/compare-products",
+      "text": "Сравнение"
+    },
+    {
+      "icon": {
+        "name": "40/tradein"
+      },
+      "href": "/assistance/trade-in",
+      "text": "Трейд-ин"
+    },
+    {
+      "icon": {
+        "name": "40/credit"
+      },
+      "href": "/for-buyers/finance/credit",
+      "text": "Расчет кредита"
+    }
+  ]
+}

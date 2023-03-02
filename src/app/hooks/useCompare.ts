@@ -1,6 +1,6 @@
 
 import { IComputer } from "types/computer"
-import { useAppDispatch } from "."
+import { useAppDispatch } from "./useAppDispatch"
 import { addProduct, removeProduct } from "features/compare/compareSlice"
 
 export const useCompare = (computerId: IComputer['id']) => {

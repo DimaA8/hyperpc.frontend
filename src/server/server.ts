@@ -7,9 +7,10 @@ import { fixtures } from './fixtures'
 import { factories } from './factories'
 import { EndPoints } from 'api/EndPoints'
 import { IComputer, IFilters } from 'types/computer'
+import { initPageRoutes } from './helpers/initPageRoutes'
 
 export const server = (environment: string = 'development') => {
-  return createServer({
+  const server = createServer({
     environment,
     models: {
       computer: Model.extend({
@@ -56,4 +57,8 @@ export const server = (environment: string = 'development') => {
       this.passthrough()
     },
   })
+
+  initPageRoutes(server);
+
+  return server;
 }

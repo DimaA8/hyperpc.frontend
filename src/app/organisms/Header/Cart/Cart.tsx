@@ -6,7 +6,7 @@ import {
   Link
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
-import { useComputersInCart } from 'app/hooks'
+import { useComputersInCart } from 'app/hooks/useComputersInCart'
 import { rem } from 'styles/theme/theme'
 
 export const Cart = () => {

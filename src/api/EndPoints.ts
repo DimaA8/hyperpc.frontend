@@ -1,3 +1,6 @@
 export const EndPoints = {
-  CATALOG: '/catalog'
+  CATALOG: '/catalog',
+  pages: {
+    HOME: '/pages/home'
+  }
 } as const

@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import { Link as RouterLink } from 'react-router-dom'
 import { RemoveFromCart } from 'app/components/RemoveFromCart'
-import { useAppSelector, useComputersInCart } from 'app/hooks'
+import { useComputersInCart } from 'app/hooks/useComputersInCart'
 import { rem } from 'styles/theme/theme'
 
 export const Cart = () => {

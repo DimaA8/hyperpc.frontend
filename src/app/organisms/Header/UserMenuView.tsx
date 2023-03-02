@@ -9,7 +9,7 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import { Link as RouterLink } from 'react-router-dom'
 import { Cart } from './Cart';
-import { useIsCartEmpty } from 'app/hooks';
+import { useIsCartEmpty } from 'app/hooks/useIsCartEmpty';
 
 interface Props {
   toggleOpen: (event: MouseEvent) => void
