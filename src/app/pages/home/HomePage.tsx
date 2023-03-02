@@ -13,7 +13,6 @@ export const HomePage = () => {
   if (data) {
     return (
       <>
-  
         <Slider />
         <Container maxWidth="lg">
           <IconLinkList links={data.iconLinkList} />
