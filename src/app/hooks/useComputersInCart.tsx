@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useAppSelector } from 'app/hooks'
+import { useAppSelector } from './useAppSelector'
 import { useGetCatalogQuery } from 'features/catalog/catalogApi'
 import { IComputer } from 'types/computer'
 

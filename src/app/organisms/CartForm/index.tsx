@@ -1,1 +1,1 @@
-export * from './CartForm'
+export { CartForm } from './CartForm'
