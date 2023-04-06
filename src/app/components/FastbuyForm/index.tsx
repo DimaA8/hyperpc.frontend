@@ -1,1 +1,0 @@
-export { FastbuyForm } from './FastbuyForm';
