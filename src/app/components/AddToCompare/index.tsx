@@ -1,1 +1,0 @@
-export { AddToCompare } from './AddToCompare'

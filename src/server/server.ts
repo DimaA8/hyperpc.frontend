@@ -1,15 +1,11 @@
-import { 
-  Model,
-  createServer,
-  belongsTo,
-} from 'miragejs'
-import { fixtures } from './fixtures'
-import { factories } from './factories'
-import { EndPoints } from 'api/EndPoints'
-import { IComputer, IFilters } from 'types/computer'
-import { initPageRoutes } from './helpers/initPageRoutes'
+import { Model, createServer, belongsTo } from "miragejs";
+import { fixtures } from "./fixtures";
+import { factories } from "./factories";
+import { EndPoints } from "api/EndPoints";
+import { IComputer, IFilters } from "types/computer";
+import { initPageRoutes } from "./helpers/initPageRoutes";
 
-export const server = (environment: string = 'development') => {
+export const server = (environment: string = "development") => {
   const server = createServer({
     environment,
     models: {
@@ -22,20 +18,20 @@ export const server = (environment: string = 'development') => {
       styling: Model,
       videocard: Model,
       board: Model,
-      processor: Model
+      processor: Model,
     },
     factories,
     fixtures,
     seeds(server) {
-      server.createList('videocard', 10)
-      server.createList('processor', 10)
-      server.createList('board', 10)
-      server.createList('styling', 10)
-      server.createList('computer', 10)
+      server.createList("videocard", 10);
+      server.createList("processor", 10);
+      server.createList("board", 10);
+      server.createList("styling", 10);
+      server.createList("computer", 10);
     },
     routes() {
-      this.urlPrefix = 'https://localhost:5000/'
-      this.namespace = 'api'
+      this.urlPrefix = "https://localhost:5000/";
+      this.namespace = "api";
 
       this.get(EndPoints.CATALOG, (schema, request) => {
         // Получить фильтры
@@ -43,22 +39,34 @@ export const server = (environment: string = 'development') => {
           videocards: schema.db.videocards,
           boards: schema.db.boards,
           processors: schema.db.processors,
-          stylings: schema.db.stylings
+          stylings: schema.db.stylings,
         };
 
-        return { 
-          computers: schema.db.computers, 
-          filters 
-        }
-      })
+        return {
+          computers: schema.db.computers,
+          filters,
+        };
+      });
 
-      this.urlPrefix = 'http://localhost:3000/'
-      this.namespace = '/'
-      this.passthrough()
+      this.post(
+        EndPoints.ORDER,
+        () => {
+          return {
+            status: "success",
+          };
+        },
+        {
+          timing: 2000,
+        }
+      );
+
+      this.urlPrefix = "/";
+      this.namespace = "/";
+      this.passthrough();
     },
-  })
+  });
 
   initPageRoutes(server);
 
   return server;
-}
+};
